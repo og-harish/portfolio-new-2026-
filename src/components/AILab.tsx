@@ -2,10 +2,10 @@ import { motion } from "motion/react";
 import { Sparkles, Brain, Bot, Rocket } from "lucide-react";
 
 const STUDIOS = [
-  { name: "Google AI Studio", icon: "https://www.gstatic.com/lamda/images/favicon_v2_f9157dc9fdd26e257125.png" },
-  { name: "Claude AI", icon: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Anthropic_logo.svg" },
-  { name: "Z AI", icon: "🤖" },
-  { name: "Lovable", icon: "https://lovable.app/favicon.ico" }
+  { name: "Google AI Studio", icon: "https://www.gstatic.com/lamda/images/favicon_v2_f9157dc9fdd26e257125.png", link: "https://aistudio.google.com/" },
+  { name: "Claude AI", icon: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Anthropic_logo.svg", link: "https://claude.ai/" },
+  { name: "Z AI", icon: "🤖", link: "https://z.ai/" },
+  { name: "Lovable", icon: "https://lovable.app/favicon.ico", link: "https://lovable.app/" }
 ];
 
 export default function AILab() {
@@ -87,14 +87,20 @@ export default function AILab() {
           <p className="text-center text-[10px] uppercase tracking-[0.4em] font-bold text-gray-500 mb-10">Powering workflows with elite AI ecosystems</p>
           <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
              {STUDIOS.map(studio => (
-               <div key={studio.name} className="flex items-center gap-3 group">
-                  <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-white/5 border border-white/10">
+               <a 
+                 key={studio.name} 
+                 href={studio.link}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="flex items-center gap-3 group cursor-pointer"
+               >
+                  <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-white/5 border border-white/10 group-hover:border-blue-500/50 transition-colors">
                     {studio.icon.startsWith('http') ? (
                       <img src={studio.icon} alt={studio.name} className="w-5 h-5 object-contain" referrerPolicy="no-referrer" />
                     ) : studio.icon}
                   </div>
                   <span className="text-xs font-bold tracking-tight text-white group-hover:text-brand-blue transition-colors">{studio.name}</span>
-               </div>
+               </a>
              ))}
           </div>
         </div>

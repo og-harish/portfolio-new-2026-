@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import TrustStrip from "./components/TrustStrip";
@@ -12,18 +13,40 @@ import ResumeCTA from "./components/ResumeCTA";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ChatBot from "./components/ChatBot";
+import HireMeModal from "./components/HireMeModal";
 import LoadingScreen from "./components/LoadingScreen";
 import CursorGlow from "./components/CursorGlow";
 
 export default function App() {
+  const [isHireMeOpen, setIsHireMeOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     // Prevent scrolling during loading
-    document.body.style.overflow = "hidden";
-  }, []);
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isLoading]);
+
+  const openHireMe = () => setIsHireMeOpen(true);
+  const closeHireMe = () => setIsHireMeOpen(false);
 
   return (
     <div className="relative selection:bg-brand-blue selection:text-white">
-      <LoadingScreen />
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            key="loader"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-[100]"
+          >
+            <LoadingScreen onComplete={() => setIsLoading(false)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <CursorGlow />
       
       {/* Background Atmospheric Effects */}
@@ -33,9 +56,9 @@ export default function App() {
       </div>
 
       <div className="relative z-10">
-        <Navbar />
+        <Navbar onHireMeClick={openHireMe} />
         <main>
-          <Hero />
+          <Hero onHireMeClick={openHireMe} />
           <TrustStrip />
           <About />
           <Skills />
@@ -43,11 +66,12 @@ export default function App() {
           <Projects />
           <AILab />
           <Services />
-          <ResumeCTA />
+          <ResumeCTA onHireMeClick={openHireMe} />
           <Contact />
         </main>
         <Footer />
         <ChatBot />
+        <HireMeModal isOpen={isHireMeOpen} onClose={closeHireMe} />
       </div>
     </div>
   );

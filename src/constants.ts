@@ -5,6 +5,7 @@ export const PERSONAL_INFO = {
   location: "Chengalpattu, Tamil Nadu, India",
   linkedin: "https://www.linkedin.com/in/harish-v-2b1489341",
   portfolio: "https://harish-portfolio-2026.netlify.app/",
+  resumeUrl: "/Harish_V_Resume.pdf", 
   title: "Data Analytics and Machine Learning Engineer",
   summary: "I build responsive websites, practical software solutions, and modern digital experiences that help businesses grow.",
   about: "Harish is a passionate and self-driven Data Analytics and Machine Learning Engineer currently pursuing BCA at Hindustan College of Arts & Science. He focuses on data-driven decision making, ML architectures, web development, and building practical digital solutions through continuous self-learning."

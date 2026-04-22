@@ -3,7 +3,7 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { PERSONAL_INFO } from "../constants";
 
-export default function Navbar() {
+export default function Navbar({ onHireMeClick }: { onHireMeClick: () => void }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -31,14 +31,15 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <motion.div
+        <motion.a
+          href="#home"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-3"
+          className="flex items-center gap-3 cursor-pointer group"
         >
-          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-lg">H</div>
-          <span className="font-bold text-xl tracking-tight italic font-display">Harish V</span>
-        </motion.div>
+          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">H</div>
+          <span className="font-bold text-xl tracking-tight italic font-display group-hover:text-blue-400 transition-colors">Harish V</span>
+        </motion.a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
@@ -54,14 +55,14 @@ export default function Navbar() {
               {link.name}
             </motion.a>
           ))}
-          <motion.a
-            href="#contact"
+          <motion.button
+            onClick={onHireMeClick}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white text-black px-5 py-2 rounded-xl text-sm font-bold hover:bg-blue-400 transition-all shadow-sm"
+            className="bg-white text-black px-5 py-2 rounded-xl text-sm font-bold hover:bg-blue-400 transition-all shadow-sm cursor-pointer"
           >
             Hire Me
-          </motion.a>
+          </motion.button>
         </div>
 
         {/* Mobile Toggle */}
@@ -90,13 +91,15 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="w-full py-3 bg-brand-blue text-center text-white rounded-xl"
-            onClick={() => setIsMobileMenuOpen(false)}
+          <button
+            className="w-full py-3 bg-brand-blue text-center text-white rounded-xl cursor-pointer"
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              onHireMeClick();
+            }}
           >
             Hire Me
-          </a>
+          </button>
         </motion.div>
       )}
     </nav>

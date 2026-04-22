@@ -10,7 +10,7 @@ const ROTATING_TEXTS = [
   "AI Problem Solver"
 ];
 
-export default function Hero() {
+export default function Hero({ onHireMeClick }: { onHireMeClick: () => void }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -59,17 +59,23 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <a
-              href="#projects"
-              className="bg-blue-600 px-8 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all flex items-center gap-2"
+            <button
+               onClick={onHireMeClick}
+               className="bg-blue-600 px-8 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-all flex items-center gap-2 cursor-pointer shadow-lg"
             >
-              View Projects
+              Hire Me
               <ExternalLink className="w-5 h-5" />
-            </a>
-            <button className="border border-white/20 px-8 py-3 rounded-xl font-bold hover:bg-white/5 transition-all flex items-center gap-2">
+            </button>
+            <a 
+              href={PERSONAL_INFO.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="Harish_V_Resume.pdf"
+              className="border border-white/20 px-8 py-3 rounded-xl font-bold hover:bg-white/5 transition-all flex items-center gap-2 cursor-pointer"
+            >
               Resume
               <Download className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </motion.div>
 

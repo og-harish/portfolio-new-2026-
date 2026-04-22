@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Download, Rocket, Linkedin } from "lucide-react";
 import { PERSONAL_INFO } from "../constants";
 
-export default function ResumeCTA() {
+export default function ResumeCTA({ onHireMeClick }: { onHireMeClick: () => void }) {
   return (
     <section className="py-24 px-6">
       <motion.div
@@ -20,17 +20,21 @@ export default function ResumeCTA() {
           </h2>
           
           <div className="flex flex-wrap justify-center gap-6 mt-12">
-            <button className="px-10 py-5 bg-white text-black hover:bg-blue-400 font-bold rounded-2xl transition-all flex items-center gap-3 shadow-xl">
+            <a 
+              href={PERSONAL_INFO.resumeUrl}
+              download="Harish_V_Resume.pdf"
+              className="px-10 py-5 bg-white text-black hover:bg-blue-400 font-bold rounded-2xl transition-all flex items-center gap-3 shadow-xl cursor-pointer"
+            >
               <Download className="w-5 h-5" />
               Download Resume
-            </button>
-            <a
-              href="#contact"
-              className="px-10 py-5 bg-white/5 border border-white/10 hover:bg-white/10 font-bold rounded-2xl transition-all flex items-center gap-3"
+            </a>
+            <button
+              onClick={onHireMeClick}
+              className="px-10 py-5 bg-white/5 border border-white/10 hover:bg-white/10 font-bold rounded-2xl transition-all flex items-center gap-3 cursor-pointer"
             >
               <Rocket className="w-5 h-5" />
               Hire Me
-            </a>
+            </button>
             <a
               href={PERSONAL_INFO.linkedin}
               target="_blank"

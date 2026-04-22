@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
-export default function LoadingScreen() {
+export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   const [percent, setPercent] = useState(0);
 
   useEffect(() => {
@@ -9,22 +9,17 @@ export default function LoadingScreen() {
       setPercent((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
+          setTimeout(onComplete, 500); // Small buffer after 100%
           return 100;
         }
         return prev + 1;
       });
-    }, 20);
+    }, 15); // Faster loading for better UX
     return () => clearInterval(interval);
-  }, []);
+  }, [onComplete]);
 
   return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 0 }}
-      transition={{ duration: 0.5, delay: 2.2 }}
-      onAnimationComplete={() => {
-        document.body.style.overflow = "auto";
-      }}
+    <div
       className="fixed inset-0 z-[100] bg-bg-dark flex flex-col items-center justify-center p-6"
     >
       <div className="relative">
@@ -54,6 +49,6 @@ export default function LoadingScreen() {
       <div className="absolute bottom-10 text-[10px] uppercase tracking-[0.4em] font-bold text-white/10">
         Premium Experience © 2026
       </div>
-    </motion.div>
+    </div>
   );
 }
