@@ -38,7 +38,7 @@ export default function Navbar({ onHireMeClick }: { onHireMeClick: () => void })
           className="flex items-center gap-3 cursor-pointer group"
         >
           <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform">H</div>
-          <span className="font-bold text-xl tracking-tight italic font-display group-hover:text-blue-400 transition-colors">Harish V</span>
+          <span className="font-bold text-xl tracking-tight italic font-display group-hover:text-blue-400 transition-colors">Harish</span>
         </motion.a>
 
         {/* Desktop Menu */}

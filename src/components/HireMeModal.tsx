@@ -10,6 +10,7 @@ type HireMeModalProps = {
 
 export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,15 +18,35 @@ export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate submission
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      onClose();
-      setFormData({ name: "", email: "", project: "", message: "" });
-    }, 3000);
+    setIsSending(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          subject: `Project Inquiry: ${formData.project}`
+        })
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          onClose();
+          setFormData({ name: "", email: "", project: "", message: "" });
+        }, 3000);
+      } else {
+        alert("Failed to send inquiry. Please try again later.");
+      }
+    } catch (error) {
+      alert("Error connecting to server.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (

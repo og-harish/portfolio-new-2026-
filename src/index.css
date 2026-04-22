@@ -8,9 +8,9 @@
   --color-brand-blue: #2563eb;
   --color-brand-purple: #9333ea;
   --color-brand-cyan: #22d3ee;
-  --color-bg-dark: #0a0a0a;
-  --color-card-bg: rgba(255, 255, 255, 0.05);
-  --color-card-border: rgba(255, 255, 255, 0.1);
+  --color-bg-dark: #030303; /* Darker than original #0a0a0a */
+  --color-card-bg: rgba(255, 255, 255, 0.03);
+  --color-card-border: rgba(255, 255, 255, 0.05);
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -28,13 +28,13 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight;
+    @apply font-display tracking-tight text-white;
   }
 }
 
 /* Immersive UI Utilities */
 .glass {
-  @apply backdrop-blur-xl bg-white/5 border border-white/10;
+  @apply backdrop-blur-xl bg-white/[0.03] border border-white/5;
 }
 
 .text-gradient {
@@ -42,16 +42,16 @@
 }
 
 .bg-immersive-gradient {
-  @apply bg-gradient-to-br from-blue-600/20 to-purple-600/20;
+  @apply bg-gradient-to-br from-blue-600/10 to-purple-600/10;
 }
 
 /* Atmospheric Effects */
 .blob-purple {
-  @apply absolute w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none;
+  @apply absolute w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none;
 }
 
 .blob-blue {
-  @apply absolute w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none;
+  @apply absolute w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none;
 }
 
 /* Custom Scrollbar */
