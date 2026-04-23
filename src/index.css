@@ -1,16 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Sora:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Sora", sans-serif;
+  --font-display: var(--font-display-theme, "Sora", sans-serif);
   
-  --color-brand-blue: #2563eb;
-  --color-brand-purple: #9333ea;
-  --color-brand-cyan: #22d3ee;
-  --color-bg-dark: #030303; /* Darker than original #0a0a0a */
-  --color-card-bg: rgba(255, 255, 255, 0.03);
-  --color-card-border: rgba(255, 255, 255, 0.05);
+  --color-brand-blue: var(--color-brand-blue-theme, #2563eb);
+  --color-brand-purple: var(--color-brand-purple-theme, #9333ea);
+  --color-brand-cyan: var(--color-brand-cyan-theme, #22d3ee);
+  --color-bg-dark: var(--color-bg-dark-theme, #030303);
+  --color-card-bg: var(--color-card-bg-theme, rgba(255, 255, 255, 0.03));
+  --color-card-border: var(--color-card-border-theme, rgba(255, 255, 255, 0.05));
+  --color-text-main: var(--color-text-main-theme, #ffffff);
+  --color-text-muted: var(--color-text-muted-theme, rgba(255, 255, 255, 0.6));
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -22,36 +24,94 @@
 }
 
 @layer base {
+  :root {
+    --font-display-theme: "Sora", sans-serif;
+    --color-brand-blue-theme: #2563eb;
+    --color-brand-purple-theme: #9333ea;
+    --color-brand-cyan-theme: #22d3ee;
+    --color-bg-dark-theme: #030303;
+    --color-card-bg-theme: rgba(255, 255, 255, 0.03);
+    --color-card-border-theme: rgba(255, 255, 255, 0.05);
+    --color-text-main-theme: #ffffff;
+    --color-text-muted-theme: rgba(255, 255, 255, 0.6);
+  }
+
+  .theme-cyber {
+    --font-display-theme: "JetBrains Mono", monospace;
+    --color-brand-blue-theme: #00f2ff;
+    --color-brand-purple-theme: #bc13fe;
+    --color-brand-cyan-theme: #00f2ff;
+    --color-bg-dark-theme: #050505;
+    --color-card-bg-theme: rgba(0, 242, 255, 0.03);
+    --color-card-border-theme: rgba(0, 242, 255, 0.1);
+  }
+
+  .theme-midnight {
+    --font-display-theme: "Outfit", sans-serif;
+    --color-brand-blue-theme: #C0C0C2;
+    --color-brand-purple-theme: #D4AF37;
+    --color-brand-cyan-theme: #E5E4E2;
+    --color-bg-dark-theme: #121212;
+    --color-card-bg-theme: rgba(255, 255, 255, 0.02);
+    --color-card-border-theme: rgba(255, 255, 255, 0.05);
+  }
+
+  .theme-paper {
+    --font-display-theme: "Playfair Display", serif;
+    --color-brand-blue-theme: #1a365d;
+    --color-brand-purple-theme: #4c1d95;
+    --color-brand-cyan-theme: #0f172a;
+    --color-bg-dark-theme: #FAF9F6;
+    --color-card-bg-theme: #FFFFFF;
+    --color-card-border-theme: rgba(0, 0, 0, 0.05);
+    --color-text-main-theme: #0f172a;
+    --color-text-muted-theme: #475569;
+  }
+
   body {
-    @apply bg-bg-dark text-white font-sans antialiased selection:bg-brand-blue/30;
+    @apply bg-bg-dark text-text-main font-sans antialiased selection:bg-brand-blue/30;
     scroll-behavior: smooth;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  .theme-cyber body {
+    background-image: 
+      linear-gradient(to right, rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display tracking-tight text-white;
+    @apply font-display tracking-tight text-text-main;
+  }
+
+  .theme-cyber h1, .theme-cyber h2, .theme-cyber h3 {
+    @apply uppercase;
   }
 }
 
 /* Immersive UI Utilities */
 .glass {
-  @apply backdrop-blur-xl bg-white/[0.03] border border-white/5;
+  @apply backdrop-blur-xl border transition-all duration-300;
+  background-color: var(--color-card-bg);
+  border-color: var(--color-card-border);
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-purple;
 }
 
 .bg-immersive-gradient {
-  @apply bg-gradient-to-br from-blue-600/10 to-purple-600/10;
+  @apply bg-gradient-to-br from-brand-blue/10 to-brand-purple/10;
 }
 
 /* Atmospheric Effects */
 .blob-purple {
-  @apply absolute w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none;
+  @apply absolute w-[500px] h-[500px] bg-brand-purple/10 rounded-full blur-[120px] pointer-events-none;
 }
 
 .blob-blue {
-  @apply absolute w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none;
+  @apply absolute w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px] pointer-events-none;
 }
 
 /* Custom Scrollbar */
@@ -64,5 +124,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  @apply rounded-full hover:opacity-80 transition-colors;
+  background-color: var(--color-brand-blue);
+  opacity: 0.2;
 }

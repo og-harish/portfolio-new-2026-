@@ -1,7 +1,7 @@
+import React, { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle2 } from "lucide-react";
 import { PERSONAL_INFO } from "../constants";
-import { useState } from "react";
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);

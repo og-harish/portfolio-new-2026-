@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { SKILLS } from "../constants";
+import { useTheme } from "./ThemeContext";
 import { 
   Code2, Database, Wrench, Palette, BrainCircuit, Cpu, 
   Globe, Layout, Smartphone, Github, Terminal, GitBranch, 
@@ -48,6 +49,8 @@ const CATEGORIES = [
 ];
 
 export default function Skills() {
+  const { layout } = useTheme();
+
   return (
     <section id="skills" className="py-24 bg-white/[0.01]">
       <div className="max-w-7xl mx-auto px-6">
@@ -59,12 +62,12 @@ export default function Skills() {
           >
             Capabilities
           </motion.div>
-          <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter">
-            Technical <span className="text-white/40">Arsenal</span>
+          <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter text-text-main">
+            Technical <span className="text-text-muted">Arsenal</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`grid ${layout === 'minimal' ? 'grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6`}>
           {CATEGORIES.map((cat, i) => (
             <motion.div
               key={cat.name}
@@ -72,19 +75,19 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white/5 border border-white/10 rounded-3xl p-8 group hover:bg-white/10 transition-colors"
+              className="glass rounded-3xl p-8 group hover:border-brand-blue/30 transition-colors"
             >
-              <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6">{cat.name}</h3>
+              <h3 className="text-xs font-bold text-text-muted uppercase tracking-widest mb-6">{cat.name}</h3>
               
-              <div className="grid grid-cols-3 gap-4">
+              <div className={`grid ${layout === 'minimal' ? 'grid-cols-4 md:grid-cols-3' : 'grid-cols-3'} gap-4`}>
                 {cat.items.map((skill) => {
                   const Icon = ICON_MAP[skill] || Code2;
                   return (
                     <div key={skill} className="flex flex-col items-center gap-1 group/item">
-                      <div className="w-12 h-12 bg-white/5 rounded-xl border border-white/5 flex items-center justify-center group-hover/item:bg-blue-500/20 transition-all font-bold text-[10px] text-white/40 group-hover/item:text-blue-400">
+                      <div className="w-12 h-12 bg-white/5 rounded-xl border border-card-border flex items-center justify-center group-hover/item:bg-brand-blue/20 transition-all font-bold text-[10px] text-text-muted group-hover/item:text-brand-blue">
                         <Icon className="w-5 h-5 transition-transform group-hover/item:scale-110" />
                       </div>
-                      <span className="text-[10px] text-gray-500 group-hover/item:text-white transition-colors text-center leading-tight">{skill}</span>
+                      <span className="text-[10px] text-text-muted group-hover/item:text-text-main transition-colors text-center leading-tight">{skill}</span>
                     </div>
                   );
                 })}

@@ -16,13 +16,14 @@ import ChatBot from "./components/ChatBot";
 import HireMeModal from "./components/HireMeModal";
 import LoadingScreen from "./components/LoadingScreen";
 import CursorGlow from "./components/CursorGlow";
+import { ThemeProvider } from "./components/ThemeContext";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
-export default function App() {
+function AppContent() {
   const [isHireMeOpen, setIsHireMeOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Prevent scrolling during loading
     if (isLoading) {
       document.body.style.overflow = "hidden";
     } else {
@@ -34,7 +35,7 @@ export default function App() {
   const closeHireMe = () => setIsHireMeOpen(false);
 
   return (
-    <div className="relative selection:bg-brand-blue selection:text-white">
+    <div className="relative">
       <AnimatePresence>
         {isLoading && (
           <motion.div
@@ -48,11 +49,12 @@ export default function App() {
         )}
       </AnimatePresence>
       <CursorGlow />
+      <ThemeSwitcher />
       
       {/* Background Atmospheric Effects */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px]" />
-         <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px]" />
+         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-purple/10 rounded-full blur-[120px]" />
+         <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px]" />
       </div>
 
       <div className="relative z-10">
@@ -74,5 +76,13 @@ export default function App() {
         <HireMeModal isOpen={isHireMeOpen} onClose={closeHireMe} />
       </div>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
