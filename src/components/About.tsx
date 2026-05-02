@@ -60,7 +60,9 @@ export default function About() {
                 <div className="text-brand-blue font-mono text-sm mb-1">{edu.period}</div>
                 <h4 className="text-xl font-bold leading-none mb-2">{edu.degree}</h4>
                 <div className="text-white/60 font-medium">{edu.institution}</div>
-                <div className="text-white/30 text-xs mt-1 uppercase tracking-widest">{edu.detail}</div>
+                {edu.detail && (
+                  <div className="text-white/30 text-xs mt-1 uppercase tracking-widest">{edu.detail}</div>
+                )}
               </motion.div>
             ))}
           </div>

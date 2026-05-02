@@ -37,8 +37,16 @@ export default function Navbar({ onHireMeClick }: { onHireMeClick: () => void })
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3 cursor-pointer group"
         >
-          <div className="w-8 h-8 bg-gradient-to-br from-brand-blue to-brand-purple rounded-lg flex items-center justify-center font-bold text-lg group-hover:scale-110 transition-transform text-white">H</div>
-          <span className="font-bold text-xl tracking-tight italic font-display group-hover:text-brand-blue transition-colors text-text-main">Harish</span>
+          <div className="relative group">
+            <img 
+              src="/logo.png" 
+              alt="Harish" 
+              className="w-10 h-10 rounded-full object-cover group-hover:scale-110 transition-all shadow-lg border-2 border-brand-blue/30 relative z-10"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-brand-blue/20 blur-md rounded-full scale-75 group-hover:scale-100 transition-transform" />
+          </div>
+          <span style={{ fontStyle: "normal", fontFamily: "Verdana" }} className="font-bold text-xl tracking-tight italic font-display group-hover:text-brand-blue transition-colors text-text-main">Harish</span>
         </motion.a>
 
         {/* Desktop Menu */}

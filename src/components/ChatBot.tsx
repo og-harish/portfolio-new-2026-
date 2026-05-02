@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { MessageSquare, X, Send, Bot, User, Loader2 } from "lucide-react";
 import { GoogleGenAI } from "@google/genai";
 import { PERSONAL_INFO, SKILLS, EXPERIENCE, PROJECTS, EDUCATION, ACHIEVEMENTS } from "../constants";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 type Message = {
   role: "user" | "bot";
@@ -120,28 +122,44 @@ export default function ChatBot() {
             </div>
 
             {/* Messages */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-4 scrollbar-hide">
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-4 scrollbar-hide bg-neutral-900/50">
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: msg.role === "user" ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  className={`flex w-full gap-3 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}
                 >
-                  <div className={`max-w-[80%] p-4 rounded-2xl text-sm ${
-                    msg.role === "user" 
-                      ? "bg-blue-600 text-white rounded-tr-none" 
-                      : "bg-white/5 text-gray-300 border border-white/10 rounded-tl-none"
+                  <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center ${
+                    msg.role === "user" ? "bg-blue-600/20 text-blue-400" : "bg-white/10 text-brand-purple"
                   }`}>
-                    {msg.content}
+                    {msg.role === "user" ? <User size={16} /> : <Bot size={16} />}
+                  </div>
+                  <div className={`max-w-[80%] p-4 rounded-2xl text-sm break-words whitespace-pre-wrap ${
+                    msg.role === "user" 
+                      ? "bg-blue-600 text-white rounded-tr-none shadow-lg shadow-blue-900/20" 
+                      : "bg-white/5 text-gray-200 border border-white/10 rounded-tl-none shadow-sm"
+                  }`}>
+                    {msg.role === "bot" ? (
+                      <div className="prose prose-invert prose-sm max-w-none prose-p:leading-relaxed prose-pre:bg-black/50 prose-pre:p-2 prose-pre:rounded-lg">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {msg.content}
+                        </ReactMarkdown>
+                      </div>
+                    ) : (
+                      msg.content
+                    )}
                   </div>
                 </motion.div>
               ))}
               {isLoading && (
-                <div className="flex justify-start">
-                  <div className="bg-white/5 text-gray-300 border border-white/10 p-4 rounded-2xl rounded-tl-none flex items-center gap-2">
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span className="text-xs italic">Thinking...</span>
+                <div className="flex justify-start gap-3 items-center">
+                  <div className="w-8 h-8 rounded-full bg-white/10 text-brand-purple flex items-center justify-center">
+                    <Bot size={16} />
+                  </div>
+                  <div className="bg-white/5 text-gray-300 border border-white/10 p-3 rounded-2xl rounded-tl-none flex items-center gap-2 shadow-sm">
+                    <Loader2 className="w-3 h-3 animate-spin text-blue-400" />
+                    <span className="text-[10px] font-medium tracking-wide uppercase">Assistant is thinking...</span>
                   </div>
                 </div>
               )}

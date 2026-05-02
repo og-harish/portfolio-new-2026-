@@ -24,15 +24,24 @@ export default function Contact() {
         body: JSON.stringify(formData)
       });
 
+      const result = await response.json();
+
       if (response.ok) {
         setIsSubmitted(true);
         setFormData({ name: "", email: "", subject: "", message: "" });
+        
+        // If it's a mock success, we keep the submitted state but could potentially show a toast
+        if (result.status === "mock_success") {
+          console.info(result.message);
+        }
+        
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
-        alert("Failed to send message. Please try again later.");
+        const errorMsg = result.error || "Failed to send message. Please try again later.";
+        alert(`Error: ${errorMsg}`);
       }
     } catch (error) {
-      alert("Something went wrong. Please check your connection.");
+      alert("Something went wrong. Please check your connection or server status.");
     } finally {
       setIsSending(false);
     }

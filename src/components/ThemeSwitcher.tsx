@@ -77,11 +77,27 @@ export default function ThemeSwitcher() {
 
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 glass flex items-center justify-center rounded-full text-brand-blue shadow-2xl hover:shadow-brand-blue/20"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="group relative w-16 h-16 flex items-center justify-center rounded-full overflow-hidden"
       >
-        <Palette size={24} />
+        {/* Magic Beam Border Animation */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0deg,var(--color-brand-blue)_90deg,transparent_180deg,var(--color-brand-purple)_270deg,transparent_360deg)] opacity-40 group-hover:opacity-100 transition-opacity"
+        />
+        
+        {/* Button Inner Body */}
+        <div className="absolute inset-[2px] bg-bg-dark rounded-full z-10 flex items-center justify-center glass shadow-2xl">
+          <Palette 
+            size={24} 
+            className="text-brand-blue group-hover:text-brand-purple transition-colors duration-500" 
+          />
+        </div>
+
+        {/* Outer Glow */}
+        <div className="absolute inset-0 bg-brand-blue/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-full" />
       </motion.button>
     </div>
   );

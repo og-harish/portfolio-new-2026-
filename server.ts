@@ -22,8 +22,19 @@ async function startServer() {
     const { name, email, subject, message, project } = req.body;
 
     if (!resend) {
-      console.warn("RESEND_API_KEY is not set. Email will not be sent.");
-      return res.status(500).json({ error: "Email service not configured. Please set RESEND_API_KEY in .env" });
+      console.log("--- MOCK EMAIL DATA ---");
+      console.log(`From: ${name} <${email}>`);
+      console.log(`To: harish.og.official@gmail.com`);
+      console.log(`Subject: ${subject || "New Inquiry"}`);
+      console.log(`Message: ${message}`);
+      console.log("------------------------");
+      console.warn("RESEND_API_KEY is not set. The message was logged to the console but not sent via email.");
+      
+      // We return success but with a notice in dev mode
+      return res.status(200).json({ 
+        status: "mock_success", 
+        message: "Development Mode: Your message was logged successfully, but no email was sent because RESEND_API_KEY is missing." 
+      });
     }
 
     try {
@@ -43,11 +54,19 @@ async function startServer() {
       });
 
       if (error) {
-        return res.status(400).json({ error });
+        console.error("Resend Error:", error);
+        let hint = "Failed to send email. Check your Resend API Key and verified domain.";
+        if (error.message.includes("verified")) {
+          hint = "The 'from' address must be verified in your Resend account. For testing, use the account owner's email as the 'to' address.";
+        }
+        return res.status(400).json({ 
+          error: error.message || hint 
+        });
       }
 
       res.status(200).json({ status: "ok", data });
     } catch (err) {
+      console.error("Server-side Email Error:", err);
       res.status(500).json({ error: "Failed to send email" });
     }
   });

@@ -8,11 +8,11 @@ export const PERSONAL_INFO = {
   resumeUrl: "/Harish_V_Resume.pdf", 
   title: "Data Analytics and Machine Learning Engineer",
   summary: "I build responsive websites, practical software solutions, and modern digital experiences that help businesses grow.",
-  about: "Harish is a passionate and self-driven Data Analytics and Machine Learning Engineer currently pursuing BCA at Hindustan College of Arts & Science. He focuses on data-driven decision making, ML architectures, web development, and building practical digital solutions through continuous self-learning."
+  about: "Harish is a passionate and self-driven Data Analytics and Machine Learning Engineer at Hindustan College of Arts & Science. He focuses on data-driven decision making, ML architectures, web development, and building practical digital solutions through continuous self-learning."
 };
 
 export const EDUCATION = [
-  { period: "2023 – 2026", degree: "BCA", institution: "Hindustan College of Arts & Science", detail: "Pursuing" },
+  { period: "2023 – 2026", degree: "BCA", institution: "Hindustan College of Arts & Science", detail: "" },
   { period: "2022 – 2023", degree: "HSC", institution: "Blessings Mat. Hr. Sec School", detail: "71%" },
   { period: "2020 – 2021", degree: "SSLC", institution: "Blessings Mat. Hr. Sec School", detail: "50%" }
 ];
@@ -38,7 +38,7 @@ export const EXPERIENCE = [
     ]
   },
   {
-    role: "Machine Learning (Pursuing)",
+    role: "Machine Learning",
     company: "Gradtwin",
     duration: "Ongoing",
     highlights: ["Deepening knowledge in AI/ML architectures"]
