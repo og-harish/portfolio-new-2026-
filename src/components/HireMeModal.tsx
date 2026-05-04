@@ -72,6 +72,7 @@ export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
             {/* Close Button */}
             <button
               onClick={onClose}
+              aria-label="Close modal"
               className="absolute top-6 right-6 p-2 rounded-full bg-white/5 text-gray-400 hover:text-white transition-colors z-50"
             >
               <X className="w-6 h-6" />
@@ -87,13 +88,13 @@ export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
                   </p>
                   
                   <div className="space-y-4">
-                    <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-3 text-sm hover:text-blue-200 transition-colors">
+                    <a href={`mailto:${PERSONAL_INFO.email}`} aria-label="Email Harish" className="flex items-center gap-3 text-sm hover:text-blue-200 transition-colors">
                       <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
                         <Mail className="w-4 h-4" />
                       </div>
                       Email Me
                     </a>
-                    <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm hover:text-blue-200 transition-colors">
+                    <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="flex items-center gap-3 text-sm hover:text-blue-200 transition-colors">
                       <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
                         <Linkedin className="w-4 h-4" />
                       </div>
@@ -143,6 +144,7 @@ export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
                             required
                             type="text"
                             placeholder="John Doe"
+                            aria-label="Full Name"
                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
                             value={formData.name}
                             onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -154,6 +156,7 @@ export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
                             required
                             type="email"
                             placeholder="john@example.com"
+                            aria-label="Work Email"
                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors"
                             value={formData.email}
                             onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -162,6 +165,7 @@ export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
                         <div>
                           <label className="text-[10px] uppercase font-bold text-gray-500 tracking-widest mb-1.5 block">Project Interest</label>
                           <select
+                            aria-label="Project Interest"
                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors appearance-none"
                             value={formData.project}
                             onChange={(e) => setFormData({...formData, project: e.target.value})}
@@ -179,6 +183,7 @@ export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
                             required
                             rows={3}
                             placeholder="Tell me about your project..."
+                            aria-label="Project details"
                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
                             value={formData.message}
                             onChange={(e) => setFormData({...formData, message: e.target.value})}

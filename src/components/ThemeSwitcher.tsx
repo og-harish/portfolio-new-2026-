@@ -39,6 +39,7 @@ export default function ThemeSwitcher() {
                   <button
                     key={t.id}
                     onClick={() => setTheme(t.id)}
+                    aria-label={`Switch to ${t.name} theme`}
                     className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200 ${
                       theme === t.id 
                         ? 'bg-brand-blue/20 text-brand-blue border border-brand-blue/20' 
@@ -59,6 +60,7 @@ export default function ThemeSwitcher() {
                   <button
                     key={l.id}
                     onClick={() => setLayout(l.id)}
+                    aria-label={`Switch to ${l.name} layout`}
                     className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200 ${
                       layout === l.id 
                         ? 'bg-brand-purple/20 text-brand-purple border border-brand-purple/20' 
@@ -77,27 +79,12 @@ export default function ThemeSwitcher() {
 
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="group relative w-16 h-16 flex items-center justify-center rounded-full overflow-hidden"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label="Toggle theme settings"
+        className="w-14 h-14 glass flex items-center justify-center rounded-full text-brand-blue shadow-2xl hover:shadow-brand-blue/20"
       >
-        {/* Magic Beam Border Animation */}
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0deg,var(--color-brand-blue)_90deg,transparent_180deg,var(--color-brand-purple)_270deg,transparent_360deg)] opacity-40 group-hover:opacity-100 transition-opacity"
-        />
-        
-        {/* Button Inner Body */}
-        <div className="absolute inset-[2px] bg-bg-dark rounded-full z-10 flex items-center justify-center glass shadow-2xl">
-          <Palette 
-            size={24} 
-            className="text-brand-blue group-hover:text-brand-purple transition-colors duration-500" 
-          />
-        </div>
-
-        {/* Outer Glow */}
-        <div className="absolute inset-0 bg-brand-blue/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-full" />
+        <Palette size={24} />
       </motion.button>
     </div>
   );

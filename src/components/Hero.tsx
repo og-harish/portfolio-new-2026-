@@ -64,6 +64,7 @@ export default function Hero({ onHireMeClick }: { onHireMeClick: () => void }) {
           <div className={`flex flex-wrap gap-4 ${layout === 'minimal' ? 'justify-center' : ''}`}>
             <button
                onClick={onHireMeClick}
+               aria-label="Contact for hiring"
                className="bg-brand-blue text-white px-8 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(var(--color-brand-blue-theme),0.4)] transition-all flex items-center gap-2 cursor-pointer shadow-lg"
             >
               Hire Me
@@ -73,7 +74,7 @@ export default function Hero({ onHireMeClick }: { onHireMeClick: () => void }) {
               href={PERSONAL_INFO.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              download="Harish_V_Resume.pdf"
+              aria-label="View Harish's Resume"
               className="border border-card-border text-text-main px-8 py-3 rounded-xl font-bold hover:bg-brand-blue/5 transition-all flex items-center gap-2 cursor-pointer"
             >
               Resume
@@ -113,6 +114,10 @@ export default function Hero({ onHireMeClick }: { onHireMeClick: () => void }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
+        aria-label="Scroll to about section"
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') document.getElementById('about')?.scrollIntoView() }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer flex flex-col items-center gap-2"
         onClick={() => document.getElementById('about')?.scrollIntoView()}
       >

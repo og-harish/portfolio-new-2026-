@@ -94,6 +94,7 @@ export default function ChatBot() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close chat assistant" : "Open chat assistant"}
         className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-2xl cursor-pointer hover:bg-blue-500 transition-colors"
       >
         {isOpen ? <X className="w-8 h-8" /> : <MessageSquare className="w-8 h-8" />}
@@ -174,11 +175,13 @@ export default function ChatBot() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSend()}
                   placeholder="Ask me anything..."
+                  aria-label="Chat input"
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition-colors pr-12"
                 />
                 <button
                   onClick={handleSend}
                   disabled={isLoading || !input.trim()}
+                  aria-label="Send message"
                   className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-blue-400 hover:text-blue-300 disabled:opacity-50 transition-colors"
                 >
                   <Send className="w-5 h-5" />

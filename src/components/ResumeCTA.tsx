@@ -22,11 +22,12 @@ export default function ResumeCTA({ onHireMeClick }: { onHireMeClick: () => void
           <div className="flex flex-wrap justify-center gap-6 mt-12">
             <a 
               href={PERSONAL_INFO.resumeUrl}
-              download="Harish_V_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-10 py-5 bg-white text-black hover:bg-blue-400 font-bold rounded-2xl transition-all flex items-center gap-3 shadow-xl cursor-pointer"
             >
               <Download className="w-5 h-5" />
-              Download Resume
+              View Resume
             </a>
             <button
               onClick={onHireMeClick}

@@ -88,6 +88,7 @@ export default function Contact() {
                 href={`https://wa.me/91${PERSONAL_INFO.phone}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Contact via WhatsApp"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] hover:bg-[#25D366]/90 text-white font-bold rounded-2xl transition-all shadow-lg shadow-[#25D366]/20"
               >
                 <MessageSquare className="w-5 h-5" />
@@ -125,6 +126,7 @@ export default function Contact() {
                     <input
                       required
                       type="text"
+                      aria-label="Your Name"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition-all"
                       placeholder="John Doe"
                       value={formData.name}
@@ -136,6 +138,7 @@ export default function Contact() {
                     <input
                       required
                       type="email"
+                      aria-label="Your Email"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition-all"
                       placeholder="john@example.com"
                       value={formData.email}
@@ -148,6 +151,7 @@ export default function Contact() {
                     <input
                       required
                       type="text"
+                      aria-label="Subject"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition-all"
                       placeholder="Project Inquiry"
                       value={formData.subject}
@@ -159,6 +163,7 @@ export default function Contact() {
                     <textarea
                       required
                       rows={5}
+                      aria-label="Message"
                       className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition-all resize-none"
                       placeholder="Let's talk about..."
                       value={formData.message}
@@ -168,6 +173,7 @@ export default function Contact() {
                 <button
                   disabled={isSending}
                   type="submit"
+                  aria-label={isSending ? "Sending message" : "Send message"}
                   className="w-full py-5 bg-brand-blue hover:bg-brand-blue/80 text-white font-bold rounded-2xl transition-all shadow-xl shadow-brand-blue/20 flex items-center justify-center gap-3 disabled:opacity-50"
                 >
                   {isSending ? "Sending..." : "Send Message"}

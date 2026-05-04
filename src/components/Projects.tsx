@@ -45,8 +45,8 @@ export default function Projects() {
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-xl font-bold group-hover:text-brand-blue transition-colors tracking-tight text-text-main">{project.title}</h3>
                   <div className="flex gap-2">
-                    <a href={project.github} className="text-text-muted hover:text-text-main transition-colors"><Github className="w-4 h-4" /></a>
-                    <a href={project.link} className="text-text-muted hover:text-text-main transition-colors"><ExternalLink className="w-4 h-4" /></a>
+                    <a href={project.github} aria-label={`View ${project.title} source on GitHub`} className="text-text-muted hover:text-text-main transition-colors"><Github className="w-4 h-4" /></a>
+                    <a href={project.link} aria-label={`View ${project.title} live demo`} className="text-text-muted hover:text-text-main transition-colors"><ExternalLink className="w-4 h-4" /></a>
                   </div>
                 </div>
                 <p className="text-[12px] text-text-muted leading-relaxed mb-6">

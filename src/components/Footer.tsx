@@ -19,13 +19,13 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-6">
-            <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" className="p-4 rounded-full glass hover:text-brand-blue transition-all">
+            <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="p-4 rounded-full glass hover:text-brand-blue transition-all">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full glass hover:text-brand-blue transition-all">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="p-4 rounded-full glass hover:text-brand-blue transition-all">
               <Github className="w-5 h-5" />
             </a>
-            <a href={`mailto:${PERSONAL_INFO.email}`} className="p-4 rounded-full glass hover:text-brand-blue transition-all">
+            <a href={`mailto:${PERSONAL_INFO.email}`} aria-label="Send Email" className="p-4 rounded-full glass hover:text-brand-blue transition-all">
               <Mail className="w-5 h-5" />
             </a>
           </div>

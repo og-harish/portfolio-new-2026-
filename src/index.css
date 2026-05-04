@@ -13,7 +13,7 @@
   --color-card-bg: var(--color-card-bg-theme, rgba(255, 255, 255, 0.03));
   --color-card-border: var(--color-card-border-theme, rgba(255, 255, 255, 0.05));
   --color-text-main: var(--color-text-main-theme, #ffffff);
-  --color-text-muted: var(--color-text-muted-theme, rgba(255, 255, 255, 0.6));
+  --color-text-muted: var(--color-text-muted-theme, rgba(255, 255, 255, 0.75));
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -34,7 +34,7 @@
     --color-card-bg-theme: rgba(255, 255, 255, 0.03);
     --color-card-border-theme: rgba(255, 255, 255, 0.05);
     --color-text-main-theme: #ffffff;
-    --color-text-muted-theme: rgba(255, 255, 255, 0.6);
+    --color-text-muted-theme: rgba(255, 255, 255, 0.75);
   }
 
   .theme-cyber {

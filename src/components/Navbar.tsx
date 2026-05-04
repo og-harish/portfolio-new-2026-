@@ -33,18 +33,13 @@ export default function Navbar({ onHireMeClick }: { onHireMeClick: () => void })
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <motion.a
           href="#home"
+          aria-label="Back to top"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3 cursor-pointer group"
         >
-          <div className="relative group">
-            <img 
-              src="/logo.png" 
-              alt="Harish" 
-              className="w-10 h-10 rounded-full object-cover group-hover:scale-110 transition-all shadow-lg border-2 border-brand-blue/30 relative z-10"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-brand-blue/20 blur-md rounded-full scale-75 group-hover:scale-100 transition-transform" />
+          <div className="w-10 h-10 rounded-xl bg-brand-blue/10 border-2 border-brand-blue/20 flex items-center justify-center group-hover:bg-brand-blue/20 transition-all shadow-lg">
+            <span className="text-brand-blue font-bold text-lg">H</span>
           </div>
           <span style={{ fontStyle: "normal", fontFamily: "Verdana" }} className="font-bold text-xl tracking-tight italic font-display group-hover:text-brand-blue transition-colors text-text-main">Harish</span>
         </motion.a>
@@ -55,6 +50,7 @@ export default function Navbar({ onHireMeClick }: { onHireMeClick: () => void })
             <motion.a
               key={link.name}
               href={link.href}
+              aria-label={`Go to ${link.name} section`}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
@@ -65,6 +61,7 @@ export default function Navbar({ onHireMeClick }: { onHireMeClick: () => void })
           ))}
           <motion.button
             onClick={onHireMeClick}
+            aria-label="Open hire me modal"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="bg-brand-blue text-white px-5 py-2 rounded-xl text-sm font-bold hover:opacity-90 transition-all shadow-sm cursor-pointer"
@@ -77,6 +74,7 @@ export default function Navbar({ onHireMeClick }: { onHireMeClick: () => void })
         <button
           className="md:hidden text-text-main"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
         </button>

@@ -33,6 +33,7 @@ export default function AILab() {
            <motion.a 
             href="https://job-ready-roadmap.lovable.app"
             target="_blank"
+            aria-label="View Job-Ready Roadmap project on Lovable"
             whileHover={{ y: -5 }}
             className="group relative bg-gradient-to-br from-blue-600/10 to-transparent border border-white/10 rounded-[2.5rem] p-10 overflow-hidden"
            >
@@ -59,6 +60,7 @@ export default function AILab() {
            <motion.a 
             href="https://chatbot-0101.netlify.app/"
             target="_blank"
+            aria-label="View Virumandi ChatBot project on Netlify"
             whileHover={{ y: -5 }}
             className="group relative bg-gradient-to-br from-purple-600/10 to-transparent border border-white/10 rounded-[2.5rem] p-10 overflow-hidden"
            >
@@ -92,6 +94,7 @@ export default function AILab() {
                  href={studio.link}
                  target="_blank"
                  rel="noopener noreferrer"
+                 aria-label={`Visit ${studio.name}`}
                  className="flex items-center gap-3 group cursor-pointer"
                >
                   <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-white/5 border border-white/10 group-hover:border-blue-500/50 transition-colors">

@@ -5,22 +5,22 @@ export const PERSONAL_INFO = {
   location: "Chengalpattu, Tamil Nadu, India",
   linkedin: "https://www.linkedin.com/in/harish-v-2b1489341",
   portfolio: "https://harish-portfolio-2026.netlify.app/",
-  resumeUrl: "/Harish_V_Resume.pdf", 
+  resumeUrl: "https://drive.google.com/file/d/1V3geeuCO6ogJ593vwcc-YH2ta7O-H2GT/view?usp=drive_link", 
   title: "Data Analytics and Machine Learning Engineer",
-  summary: "I build responsive websites, practical software solutions, and modern digital experiences that help businesses grow.",
-  about: "Harish is a passionate and self-driven Data Analytics and Machine Learning Engineer at Hindustan College of Arts & Science. He focuses on data-driven decision making, ML architectures, web development, and building practical digital solutions through continuous self-learning."
+  summary: "A passionate and self-motivated tech lover looking to start my career in a company where I can learn from experienced people and use my skills in coding, creativity, and teamwork to help the team grow.",
+  about: "Harish is a passionate and self-driven developer focusing on Data Analytics and Machine Learning. A student at Hindustan College of Arts & Science, he is a self-taught developer with consistent coding practice using VS Code. He specializes in data-driven decision making, ML architectures, and building practical digital solutions through continuous learning from resources like W3Schools and Geeksforgeeks."
 };
 
 export const EDUCATION = [
-  { period: "2023 – 2026", degree: "BCA", institution: "Hindustan College of Arts & Science", detail: "" },
-  { period: "2022 – 2023", degree: "HSC", institution: "Blessings Mat. Hr. Sec School", detail: "71%" },
-  { period: "2020 – 2021", degree: "SSLC", institution: "Blessings Mat. Hr. Sec School", detail: "50%" }
+  { period: "2023 – 2026", degree: "BCA (Pursuing)", institution: "Hindustan College of Arts & Science", detail: "Focused on Computer Applications and Data Science." },
+  { period: "2022 – 2023", degree: "HSC", institution: "Blessings Mat. Hr. Sec School", detail: "71% Score" },
+  { period: "2020 – 2021", degree: "SSLC", institution: "Blessings Mat. Hr. Sec School", detail: "50% Score" }
 ];
 
 export const SKILLS = {
-  frontend: ["HTML", "CSS", "JavaScript", "Responsive Design", "Cross-device Compatibility"],
+  frontend: ["HTML", "CSS", "Responsive WebDesign", "Cross-device Compatibility"],
   backend: ["Java (Basics)", "Python (Basics)", "MySQL"],
-  tools: ["Git", "GitHub", "VS Code", "Netlify", "Linux", "Antigravity"],
+  tools: ["Git/Github", "Visual Studio code", "Netlify", "Linux", "Antigravity", "WPS"],
   aiPlatforms: ["Google AI Studio", "Claude AI", "Z AI", "Lovable", "Gemini"],
   creative: ["Canva", "Gamma AI", "Adobe Premiere Pro"],
   core: ["Debugging", "Problem Solving", "Teamwork", "Fast Learner"]
@@ -32,16 +32,16 @@ export const EXPERIENCE = [
     company: "Pantech Solutions, Chennai",
     duration: "1 Month",
     highlights: [
-      "Learned frontend/backend workflow",
-      "Worked on Java full stack basics",
-      "Practical coding exposure"
+      "Worked on Java Full Stack (Basic)",
+      "Learned Frontend–Backend development",
+      "Practical implementation of full stack concepts"
     ]
   },
   {
-    role: "Machine Learning",
+    role: "Machine Learning (Pursuing)",
     company: "Gradtwin",
     duration: "Ongoing",
-    highlights: ["Deepening knowledge in AI/ML architectures"]
+    highlights: ["Advancing skills in AI and Machine Learning architectures"]
   }
 ];
 
